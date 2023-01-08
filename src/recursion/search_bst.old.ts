@@ -1,6 +1,6 @@
-function main(nums, target) {
+function main(nums: number[], target: number) {
   let index = -1;
-  function dfs(sliced_arr, target) {
+  function dfs(sliced_arr: number[], target: number): undefined | number {
     //   cases
     const ARRAY_CONTAINS_SINGLE_ELEMENT = sliced_arr.length === 1;
 
