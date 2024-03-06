@@ -17,7 +17,6 @@ function binarySearch( tree: number[], val: number ): number{
     return binarySearch( tree.slice(left, midIndex ), val)
 }
 
-
-  console.log(binarySearch([1,2,3,45,56,100,201,300,400, 401, 403], 56))
+ console.log(binarySearch([1,2,3,45,56,100,201,300,400, 401, 403], 56))
 
   // console.log( [1,2,4,5].slice(2))
