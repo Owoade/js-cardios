@@ -23,4 +23,5 @@ function binary_search(haystack, needle){
 
 }
 
+
 console.log(binary_search([1, 3, 4, 69, 71, 81, 90, 99, 420, 1337, 69420], 420))
