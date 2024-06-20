@@ -1,3 +1,3 @@
 export interface AuthStrategy {
-    strategy: Function
+    execute: Function
 }
