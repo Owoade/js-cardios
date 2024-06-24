@@ -1,6 +1,6 @@
 import { EditorCommand } from "./commands/type";
 
-class Editor {
+export class Editor {
     
     constructor(
         public state: string = '',
