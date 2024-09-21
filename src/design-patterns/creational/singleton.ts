@@ -1,4 +1,4 @@
-class DatabaseConnection { 
+ class DatabaseConnection { 
 
     private static instance: DatabaseConnection | null = null;
 
