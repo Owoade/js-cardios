@@ -34,3 +34,5 @@ function quick_sort( arr ){
 }
 
 console.log(quick_sort(unsorted_arr))
+
+console.log([...[...[0], 1, ...[4]], 4, ...[...[5], 8, ...[28]]]);
