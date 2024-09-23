@@ -5,7 +5,7 @@
  */
 
     
-const unsorted_arr = [34, 7, 23, 32, 5, 62, 16, 12, 4, 19];;
+const unsorted_arr = [34, 7, 23, 32, 5, 62, 16, 12, 4, 19];
 function bubble_sort( arr, sorted_arr ){
     
     // base case
