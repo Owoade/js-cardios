@@ -21,15 +21,4 @@ console.log([2,310 ,32,95,60,40,89].sort((a,b)=>{
         }
     }
 
-    
-    // if( a_to_string.length !== b_to_string.length ){
-    //   const length_diff = a_to_string.length - b_to_string.length;
-    //   if(length_diff > 0){
-    //     const a_substr = a_to_string.substring(0,a_to_string.length);
-    //     if(parseInt(a_substr) > b) return b - a;
-    //     else return a - b;
-    //   }
-    // }else{
-    //   return b - a 
-    // }
   }))
