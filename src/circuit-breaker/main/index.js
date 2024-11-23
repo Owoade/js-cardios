@@ -82,6 +82,8 @@ class CircuitBreakerProtectedService {
 
                     this.#total_attempts = 0;
 
+                    this.#succeeded = 0;
+
                     this.#THRESHOLD = 10;
 
                 }, 60000)
@@ -113,6 +115,15 @@ class CircuitBreakerProtectedService {
 
             const data = await this.call_external_service();
 
+            if( ++this.#succeeded === this.#THRESHOLD ){
+
+                this.#succeeded = 0;
+
+                this.#status = "closed";
+
+                this.initiate_counter()
+            }
+
             return data;
 
         }
@@ -130,6 +141,8 @@ class CircuitBreakerProtectedService {
                 this.#failed = 0;
 
                 this.#total_attempts = 0;
+
+                this.#succeeded = 0;
 
                 this.#THRESHOLD = 10;
 
