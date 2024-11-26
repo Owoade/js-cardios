@@ -6,6 +6,7 @@ class CircuitBreakerProtectedService {
     #total_attempts;
     #IS_AVAILABLE;
     #SERVICE_URL;
+    #SERVICE_HEALTH_URL;
     #THRESHOLD;
     #status;
     #counter_id;
@@ -13,6 +14,7 @@ class CircuitBreakerProtectedService {
         this.#failed = 0;
         this.#IS_AVAILABLE = true;
         this.#SERVICE_URL="http://localhost:5000";
+        this.#SERVICE_HEALTH_URL="http://localhost:5000/health"
         this.#THRESHOLD = Infinity;
         this.#status = "closed";
 
@@ -76,6 +78,8 @@ class CircuitBreakerProtectedService {
 
                     this.#status = "half-open";
 
+                    this.check_external_service_health()
+
                     clearInterval(this.#counter_id)
 
                     this.#failed = 0;
@@ -119,6 +123,8 @@ class CircuitBreakerProtectedService {
 
                 this.#succeeded = 0;
 
+                this.#failed = 0;
+
                 this.#status = "closed";
 
                 this.initiate_counter()
@@ -135,6 +141,8 @@ class CircuitBreakerProtectedService {
             setTimeout(()=>{
 
                 this.#status = "half-open";
+
+                this.check_external_service_health()
 
                 clearInterval(this.#counter_id)
 
@@ -155,6 +163,23 @@ class CircuitBreakerProtectedService {
         
         this.#counter_id = setInterval( ()=> this.#counter_id = 0, 60000 );
 
+    }
+
+    async check_external_service_health(){
+        
+        try {
+
+            await axios.get(this.#SERVICE_HEALTH_URL);
+
+            this.#status = "closed";
+
+        }
+
+        catch(e){
+
+            setTimeout( this.check_external_service_health, 2000 );
+
+        }
     }
 
     
